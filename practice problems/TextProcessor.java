@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TextProcessor {
+class TextProcessor {
 
     // Method to clean and validate input
     public static String cleanInput(String input) {
@@ -24,16 +24,16 @@ public class TextProcessor {
         }
 
         // Find most common character
-        Map<Character, Integer> freq = new HashMap<>();
+        int[] freq = new int[256];
         for (char c : text.replace(" ", "").toCharArray()) {
-            freq.put(c, freq.getOrDefault(c, 0) + 1);
+            freq[c]++;
         }
         char mostCommon = ' ';
         int maxFreq = 0;
-        for (char c : freq.keySet()) {
-            if (freq.get(c) > maxFreq) {
-                maxFreq = freq.get(c);
-                mostCommon = c;
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] > maxFreq) {
+            maxFreq = freq[i];
+            mostCommon = (char) i;
             }
         }
 
