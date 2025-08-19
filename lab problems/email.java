@@ -24,5 +24,10 @@ class email {
                 }
             }
         }
+        //extract username and domain using substring()
+        String username = email.substring(0, email.indexOf('@'));
+        String domain = email.substring(email.indexOf('@') + 1);
+        System.out.println("Username: " + username);
+        System.out.println("Domain: " + domain);
     }    
 }
