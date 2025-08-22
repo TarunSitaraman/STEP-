@@ -30,13 +30,12 @@ public class StringManipulation {
         System.out.println("Joined words: " + joined);
 
         // Remove all punctuation
-        
 
         // Capitalize first letter of each word
 
         // Reverse the order of words
 
         // Count word frequency
-        
+
     }
 }

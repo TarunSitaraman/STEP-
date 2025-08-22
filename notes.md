@@ -5,3 +5,12 @@ ASCII Value of 'z' is 122
 ASCII Value of '0' is 48
 ASCII Value of '9' is 57
 ASCII Value of ' ' (space) is 32
+
+
+**OOPS**
+-Classes
+-Objects
+-Inheritance
+-Polymorphism
+-Abstraction
+-Encapsulation
