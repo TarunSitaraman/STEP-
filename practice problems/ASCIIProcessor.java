@@ -54,7 +54,5 @@ public class ASCIIProcessor {
             }
         }
         System.out.println(cipher);
-
-        scanner.close();
     }
 }

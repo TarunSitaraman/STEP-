@@ -10,12 +10,16 @@ public class AdvancedStringAnalyzer {
         System.out.print("Enter the second string: ");
         String str2 = scanner.nextLine();
         // TODO: Perform comprehensive comparison analysis:
+        
         // 1. Reference equality (==)
         System.out.println("   > Result: " + (str1 == str2));
+        
         // 2. Content equality (equals)
         System.out.println("   > Result: " + str1.equals(str2));
+        
         // 3. Case-insensitive equality (equalsIgnoreCase)
         System.out.println("   > Result: " + str1.equalsIgnoreCase(str2));
+        
         // 4. Lexicographic comparison (compareTo)
         int compareResult = str1.compareTo(str2);
         System.out.println("   > Result: " + compareResult);
@@ -26,6 +30,7 @@ public class AdvancedStringAnalyzer {
         } else {
             System.out.println("   > (The strings are alphabetically identical)");
         }
+        
         // 5. Case-insensitive lexicographic comparison
         int compareResultIgnoreCase = str1.compareToIgnoreCase(str2);
         System.out.println("   > Result: " + compareResultIgnoreCase);
@@ -36,9 +41,11 @@ public class AdvancedStringAnalyzer {
         } else {
             System.out.println("   > (The strings are alphabetically identical)");
         }
+        
         // 6. Similarity percentage calculation
         double similarity = calculateSimilarity(str1, str2);
         System.out.printf("   > Result: %.2f%%\n", similarity);
+        
         // TODO: Performance analysis of different string operations
     }
 
