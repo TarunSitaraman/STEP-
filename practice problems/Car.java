@@ -3,7 +3,7 @@ public class Car {
     int year;
     boolean isRunning;
 
-    public void Car(String brand, String model, int year, String color) {
+    public Car(String brand, String model, int year, String color) {
         this.brand = brand;
         this.model = model;
         this.year = year;
