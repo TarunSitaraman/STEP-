@@ -1,9 +1,7 @@
-package som.company.security;
-
 public class AccessModifierDemo {
-    // Fields with different access modifiers
+    // Four fields with different access modifiers
     private int privateField;
-    String defaultField;
+    String defaultField;           // default (package-private) access
     protected double protectedField;
     public boolean publicField;
 
@@ -15,12 +13,12 @@ public class AccessModifierDemo {
         publicField = pub;
     }
 
-    // Methods with different access modifiers
+    // Four methods with different access modifiers
     private void privateMethod() {
         System.out.println("Private method called");
     }
 
-    void defaultMethod() {
+    void defaultMethod() {  // package-private
         System.out.println("Default method called");
     }
 
@@ -32,49 +30,57 @@ public class AccessModifierDemo {
         System.out.println("Public method called");
     }
 
-    // Demonstrate internal access to all fields and methods
+    // Public method to test internal access
     public void testInternalAccess() {
-        // All fields accessible within the class
-        System.out.println("privateField   = " + privateField);
-        System.out.println("defaultField   = " + defaultField);
+        System.out.println("Accessing fields internally:");
+        System.out.println("privateField = " + privateField);
+        System.out.println("defaultField = " + defaultField);
         System.out.println("protectedField = " + protectedField);
-        System.out.println("publicField    = " + publicField);
+        System.out.println("publicField = " + publicField);
 
+        System.out.println("Calling methods internally:");
         privateMethod();
         defaultMethod();
         protectedMethod();
         publicMethod();
+        // All accessible within the same class
     }
 
     public static void main(String[] args) {
-        AccessModifierDemo obj = new AccessModifierDemo(1, "default", 3.14, true);
+        AccessModifierDemo demo = new AccessModifierDemo(10, "default", 3.14, true);
 
-        System.out.println(obj.privateField);
-        System.out.println(obj.defaultField);
-        System.out.println(obj.protectedField);
-        System.out.println(obj.publicField);
+        // Accessible in same class:
+        System.out.println("Access in main:");
 
-        obj.privateMethod();
-        obj.defaultMethod();
-        obj.protectedMethod();
-        obj.publicMethod();
+        // System.out.println(demo.privateField); // OK (main method is inside class)
+        // System.out.println(demo.defaultField); // OK
+        // System.out.println(demo.protectedField); // OK
+        // System.out.println(demo.publicField); // OK
 
-        obj.testInternalAccess();
+        // demo.privateMethod(); // OK
+        // demo.defaultMethod(); // OK
+        // demo.protectedMethod(); // OK
+        // demo.publicMethod(); // OK
+
+        demo.testInternalAccess(); // Shows all internal accesses
+
+        // NOTE: The commented out lines above will work in main method, since it's inside class
     }
+}
 
-    class SamePackageTest {
-        public static void testAccess() {
-            AccessModifierDemo obj = new AccessModifierDemo(5, "test", 2.71, false);
+// Second class in SAME package for testing
+class SamePackageTest {
+    public static void testAccess() {
+        AccessModifierDemo demo = new AccessModifierDemo(20, "same", 6.28, false);
 
-            System.out.println(obj.privateField);
-            System.out.println(obj.defaultField);
-            System.out.println(obj.protectedField);
-            System.out.println(obj.publicField);
+        // System.out.println(demo.privateField);     // ERROR: private (not accessible)
+        System.out.println(demo.defaultField);        // OK: default/package-private
+        System.out.println(demo.protectedField);      // OK: protected
+        System.out.println(demo.publicField);         // OK: public
 
-            obj.privateMethod();
-            obj.defaultMethod();
-            obj.protectedMethod();
-            obj.publicMethod();
-        }
+        // demo.privateMethod();    // ERROR: private (not accessible)
+        demo.defaultMethod();      // OK: default/package-private
+        demo.protectedMethod();    // OK: protected
+        demo.publicMethod();       // OK: public
     }
 }
